@@ -1,0 +1,16 @@
+{
+  "id":"acode.luasampautocomplete",
+  "name":"Lua Samp Snippets",
+  "main":"main.js",
+  "version":"0.0.1",
+  "readme":"readme.md",
+  "minVersionCode":260,
+  "icon":"icon.png",
+  "files":[],
+  "author":{
+      "name":"epang",
+      "email":"epanggacoer@gmail.com",
+      "github":"epangg"
+  }
+    
+}
