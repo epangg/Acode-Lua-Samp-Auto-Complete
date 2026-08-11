@@ -7,7 +7,7 @@
 <br>
 
 <img src="https://img.shields.io/badge/entries-1953-b30000?style=for-the-badge&labelColor=111111" alt="Entries">
-<img src="https://img.shields.io/badge/version-1.1.8-b30000?style=for-the-badge&labelColor=111111" alt="Version">
+<img src="https://img.shields.io/badge/version-2.0.0-b30000?style=for-the-badge&labelColor=111111" alt="Version">
 <img src="https://img.shields.io/badge/platform-Acode-b30000?style=for-the-badge&labelColor=111111" alt="Platform">
 <img src="https://img.shields.io/badge/license-Freeware-b30000?style=for-the-badge&labelColor=111111" alt="License">
 
