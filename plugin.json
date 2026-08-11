@@ -4,9 +4,10 @@
   "main": "main.js",
   "version": "2.0.0",
   "readme": "readme.md",
-  "changelogs": "CHANGELOG.md",
+  "changelogs": "changelogs.md",
   "icon": "icon.png",
-  "license": "Freewave",
+  "license": "MIT",
+  "minVersionCode": 290,
   "repository": "https://github.com/epangg/Acode-Lua-Samp-Auto-Complete",
   "files": [
     "autocomplete.json"
