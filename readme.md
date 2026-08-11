@@ -2,7 +2,7 @@
 
 ### ⚡ MoonLoader / MonetLoader Autocomplete for Acode
 
-![Banner](https://raw.githubusercontent.com/epangg/Acode-Lua-Samp-Auto-Complete/main/banner.png?utm_source=chatgpt.com)
+![Banner](https://raw.githubusercontent.com/epangg/Acode-Lua-Samp-Auto-Complete/main/banner.png)
 
 <br>
 
