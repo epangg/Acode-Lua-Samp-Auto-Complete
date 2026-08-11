@@ -2,8 +2,9 @@
   "id": "lua.samp.autocomplete",
   "name": "SAMP Lua Autocomplete",
   "main": "main.js",
-  "version": "1.1.8",
+  "version": "2.0.0",
   "readme": "readme.md",
+  "changelog": "CHANGELOG.md",
   "icon": "icon.png",
   "license": "Freewave",
   "files": [
