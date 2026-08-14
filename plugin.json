@@ -1,5 +1,5 @@
 {
-  "id": "lua.samp.autocomplete",
+  "id": "samp.lua.autocomplete",
   "name": "SAMP Lua Autocomplete",
   "main": "main.js",
   "version": "2.0.0",
