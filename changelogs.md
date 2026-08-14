@@ -44,7 +44,7 @@ All notable changes to this project will be documented in this file.
 
 Initial Release
 
-- Initial release of Lua SA-MP Autocomplete for Acode.
+- Initial release of SA-MP Lua Autocomplete for Acode.
 - Added basic Lua/SA-MP autocomplete functionality.
 - Added Acode plugin configuration.
 - Added initial autocomplete database.
