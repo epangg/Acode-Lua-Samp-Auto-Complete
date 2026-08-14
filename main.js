@@ -1,7 +1,7 @@
 (function () {
     "use strict";
 
-    var PLUGIN_ID = "lua.samp.autocomplete";
+    var PLUGIN_ID = "samp.lua.autocomplete";
     var API = [];
     var cmExtension = null;
 
@@ -15,10 +15,10 @@
             }
 
             API = await response.json();
-            console.log("[Lua Samp Autocomplete] Berhasil load " + API.length + " data.");
+            console.log("[Samp Lua Autocomplete] Berhasil load " + API.length + " data.");
             return true;
         } catch (e) {
-            console.error("[Lua Samp Autocomplete] Waduh, autocomplete.json gagal dibaca:", e);
+            console.error("[Samp Lua Autocomplete] Waduh, autocomplete.json gagal dibaca:", e);
             API = [];
             return false;
         }
@@ -151,9 +151,9 @@
                 effects: cm.state.StateEffect.appendConfig.of(cmExtension)
             });
             cmInstalled = true;
-            console.log("[Lua Samp Autocomplete] Completion source terpasang (CodeMirror).");
+            console.log("[Samp Lua Autocomplete] Completion source terpasang (CodeMirror).");
         } catch (e) {
-            console.error("[Lua Samp Autocomplete] Gagal pasang completion source:", e);
+            console.error("[Samp Lua Autocomplete] Gagal pasang completion source:", e);
         }
     }
 
