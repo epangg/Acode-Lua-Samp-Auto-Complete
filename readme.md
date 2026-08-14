@@ -21,7 +21,7 @@
 
 ## 🔥 About
 
-**SAMP Lua Autocomplete** is an autocomplete plugin for **Acode** built specifically for **MoonLoader / MonetLoader** script development.
+**LUA Samp Autocomplete** is an autocomplete plugin for **Acode** built specifically for **MoonLoader / MonetLoader** script development.
 
 Instead of constantly switching to documentation to look up an opcode or function, just type the function name in the editor and let autocomplete do the rest.
 
@@ -142,7 +142,7 @@ Currently featuring **1,953 entries**.
 
 <br><br>
 
-### 🔴 SAMP Lua Autocomplete
+### 🔴 LUA Samp Autocomplete
 
 *Code less. Search less. Build more.*
 
