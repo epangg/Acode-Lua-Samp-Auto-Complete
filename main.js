@@ -6,123 +6,70 @@
 
     async function loadAPI(baseUrl) {
         try {
-            var response = await fetch(baseUrl + "/autocomplete.json");
-
-            if (!response.ok) {
-                throw new Error("HTTP " + response.status);
-            }
-
+            var response = await fetch(baseUrl + "autocomplete.json");
+            if (!response.ok) throw new Error("HTTP " + response.status);
             API = await response.json();
-
-            console.log(
-                "[Lua Samp Autocomplete] Berhasil load " +
-                API.length +
-                " data."
-            );
-
+            console.log("[Lua Samp Autocomplete] Berhasil load " + API.length + " data.");
             return true;
         } catch (e) {
-            console.error(
-                "[Lua Samp Autocomplete] Waduh, autocomplete.json gagal dibaca:",
-                e
-            );
-
+            console.error("[Lua Samp Autocomplete] Gagal load autocomplete.json:", e);
             API = [];
             return false;
         }
     }
 
-    function buildCompletions() {
-        return API.map(function (item) {
+    function luaCompletionSource(context) {
+        var word = context.matchBefore(/\w*/);
+        if (!word || (word.from === word.to && !context.explicit)) {
+            return null;
+        }
+
+        var snippetFn = acode.require("autocomplete")?.snippet
+            || window.CodeMirrorAutocomplete?.snippet;
+
+        var options = API.map(function (item) {
+            var applyFn = item.value
+                ? snippetFn(item.value)
+                : undefined;
+
             return {
-                caption: item.name,
-                snippet: item.value || item.name,
-                meta: item.meta || "moonloader",
-                score: item.score || 1000,
-                docHTML:
-                    "<b>" +
-                    item.name +
-                    "</b><hr>" +
-                    (item.doc || "Dokumentasinya belum ada.")
+                label: item.name,
+                apply: applyFn,
+                detail: item.meta || "moonloader",
+                info: function () {
+                    var el = document.createElement("div");
+                    el.innerHTML = item.doc || "Dokumentasinya belum ada.";
+                    return el;
+                },
+                type: "function",
+                boost: 99
             };
         });
+
+        return {
+            from: word.from,
+            options: options,
+            validFor: /^\w*$/
+        };
     }
 
-    var moonloaderCompleter = {
-        getCompletions: function (
-            editor,
-            session,
-            pos,
-            prefix,
-            callback
-        ) {
-            try {
-                var mode = session.$modeId || "";
-
-                if (mode.indexOf("lua") === -1) {
-                    callback(null, []);
-                    return;
-                }
-
-                callback(null, buildCompletions());
-            } catch (e) {
-                callback(null, []);
-            }
-        }
-    };
-
     function enableCompleter() {
-        var editor = editorManager.editor;
-
-        if (!editor || !editor.completers) {
-            return;
-        }
-
-        var already =
-            editor.completers.indexOf(moonloaderCompleter) !== -1;
-
-        if (!already) {
-            editor.completers.push(moonloaderCompleter);
-        }
-
-        editor.setOptions({
-            enableBasicAutocompletion: true,
-            enableLiveAutocompletion: true
-        });
+        var editorLanguages = acode.require("editorLanguages");
+        editorLanguages.setCompletion?.("lua", luaCompletionSource);
     }
 
     function disableCompleter() {
-        var editor = editorManager.editor;
-
-        if (!editor || !editor.completers) {
-            return;
-        }
-
-        var index =
-            editor.completers.indexOf(moonloaderCompleter);
-
-        if (index !== -1) {
-            editor.completers.splice(index, 1);
-        }
+        var editorLanguages = acode.require("editorLanguages");
+        editorLanguages.setCompletion?.("lua", null);
     }
 
-    acode.setPluginInit(
-        PLUGIN_ID,
-        async function (baseUrl, $page, cache) {
-            var loaded = await loadAPI(baseUrl);
+    acode.setPluginInit(PLUGIN_ID, async function (baseUrl, $page, cache) {
+        var loaded = await loadAPI(baseUrl);
+        if (!loaded) return;
+        enableCompleter();
+    });
 
-            if (!loaded) {
-                return;
-            }
-
-            enableCompleter();
-        }
-    );
-
-    acode.setPluginUnmount(
-        PLUGIN_ID,
-        function () {
-            disableCompleter();
-        }
-    );
+    acode.setPluginUnmount(PLUGIN_ID, function () {
+        disableCompleter();
+    });
 })();
