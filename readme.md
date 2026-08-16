@@ -21,7 +21,9 @@
 
 ## 🔥 About
 
-Lua autocomplete database for Acode, focused on SA-MP, MoonLoader and MonetLoader.
+**LUA Samp Autocomplete** is an autocomplete plugin for **Acode** built specifically for **MoonLoader / MonetLoader** script development.
+
+Instead of constantly switching to documentation to look up an opcode or function, just type the function name in the editor and let autocomplete do the rest.
 
 ### ✦ Built for a faster workflow
 
