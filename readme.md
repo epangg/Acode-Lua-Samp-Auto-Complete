@@ -25,6 +25,14 @@
 
 Instead of constantly switching to documentation to look up an opcode or function, just type the function name in the editor and let autocomplete do the rest.
 
+## 📁 Installation
+
+1. Download the autocomplete files.
+2. Open Acode.
+3. Copy the files to the appropriate autocomplete directory.
+4. Restart Acode.
+5. Start writing Lua code.
+
 ### ✦ Built for a faster workflow
 
 ```
